@@ -9,11 +9,12 @@ function buildMerkleTree(transactions) {
 
     const tree = [level]; // array of arrays
     while (level.length > 1) {
+        if (level.length % 2 === 1) level.push(level[level.length - 1]);
+        // after doing task 7, I understood how to manage odd amount of nodes correctly
         const nextLevel = [];
 
         for (let i = 0; i < level.length; i += 2) {
             if (i + 1 < level.length) nextLevel.push(sha256(level[i] + level[i + 1]));
-            else nextLevel.push(level[i]);
         }
 
         tree.push(nextLevel);

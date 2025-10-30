@@ -41,7 +41,7 @@ class Blockchain {
     addBlock(data) {
         const validator = this.chooseValidator();
         const newBlock = new Block(this.chain.length, data, validator.name, this.getLastBlock().hash);
-        console.log(`Block <${this.getLastBlock().hash}> ` +
+        console.log(`Block <${newBlock.hash}> ` +
             `validated by ${validator.name} (stake = ${validator.stake})`);
         this.chain.push(newBlock);
     }
